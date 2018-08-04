@@ -65,11 +65,11 @@ stage::stage(String fondo)
 	bats.push_back(Bat(&textura_bat, Vector2u(10, 10), 0.07f, 130, 4, 100.0f, 10.0f, Vector2f(4600.0f, 800.0f)));
 	bats.push_back(Bat(&textura_bat, Vector2u(10, 10), 0.07f, 130, 4, 100.0f, 10.0f, Vector2f(4800.0f, 800.0f)));
 
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(1300.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2000.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2800.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(4700.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(4500.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(1300.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2000.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2800.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(4700.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 100.0f, 100.0f, 0.6f, 50.0f, Vector2f(4500.0f, 800.0f)));
 
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(3900, 800.0f)));
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(5700, 800.0f)));

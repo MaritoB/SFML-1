@@ -21,7 +21,7 @@ void Orco::Update(float deltaTime, Campeon & campeon)
 	if (!atacar)
 	{
 
-		if (sqrt(pow((campeon.GetPosition().x - body.getPosition().x), 2)) < 250)
+		if (sqrt(pow((campeon.GetPosition().x - body.getPosition().x), 2)) < 400)
 		{
 			if (campeon.GetPosition().x < body.getPosition().x)
 			{

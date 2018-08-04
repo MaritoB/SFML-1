@@ -21,8 +21,8 @@ int main()
 	window.setFramerateLimit(60);
 	sf::Music music ;
 	music.openFromFile("music.ogg");
-	music.setVolume(5);
-	music.setPlayingOffset(sf::seconds(60));
+	music.setVolume(50);
+	music.setPlayingOffset(sf::seconds(70));
 	music.play();
 	stage stage1("prueba.png");
 	Texture textura_campeon0;
