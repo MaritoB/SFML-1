@@ -115,6 +115,14 @@ void Campeon::Update(float deltaTime, sf::RenderWindow & window)
 			setIsAlive(false);
 		}
 	}
+	if (clock_recuperacion.getElapsedTime().asSeconds() < recuperacion )
+	{
+		body.setFillColor(sf::Color::Red);
+	}
+	else
+	{
+		body.setFillColor(sf::Color::White);
+	}
 
 
 	animacion.Update(row, deltaTime, faceRight, atacar, morir);
