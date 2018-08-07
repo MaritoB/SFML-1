@@ -199,7 +199,7 @@ void Campeon::disparar(sf::Vector2i posicion)
 	if (clock_ataque.getElapsedTime().asSeconds() > vel_ataque)
 	{
 
-		balas.push_back(Proyectil(&txt_bala,sf::Vector2u(10,1),0.05f, 10.0f, 3.0f, 300.0f,(sf::Vector2f)posicion,body.getPosition()));
+		balas.push_back(Proyectil(&txt_bala,sf::Vector2u(10,1),0.04f, 10.0f, 3.0f, 300.0f,(sf::Vector2f)posicion,body.getPosition()));
 		clock_ataque.restart();
 	}
 

@@ -24,6 +24,7 @@ public:
 	void getHurt(float daño);
 	sf::Vector2i procesarMouse(sf::RenderWindow & window);
 	sf::Vector2f GetPosition() { return body.getPosition(); }
+	void SetPosition(sf::Vector2f position) {body.setPosition(position); }
 	void setIsAlive(bool x) { isAlive = x; }
 	bool getIsAlive() { return isAlive; }
 	Collider GetCollider() { return Collider(body); }
@@ -36,6 +37,10 @@ public:
 
 
 private:
+	Animacion animacion;
+	unsigned int row;
+	bool faceRight;
+
 	sf::Texture txt_lifeBar;
 	LifeBar * lifeBar;
 
@@ -46,9 +51,6 @@ private:
 	sf::Clock clock_dash;
 
 	sf::RectangleShape body;
-	Animacion animacion;
-	unsigned int row;
-	bool faceRight;
 	float speed;
 	float vel_ataque;
 	float recuperacion;

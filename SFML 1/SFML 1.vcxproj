@@ -143,6 +143,7 @@
     <ClCompile Include="LifeBar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Proyectil.cpp" />
     <ClCompile Include="stage1.cpp" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="juego.h" />
     <ClInclude Include="LifeBar.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="Proyectil.h" />
     <ClInclude Include="stage1.h" />
   </ItemGroup>

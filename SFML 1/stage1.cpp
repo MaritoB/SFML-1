@@ -15,6 +15,7 @@ stage::stage(String fondo)
 
 
 	textura_bat.loadFromFile("ratbat.png");
+	textura_portal.loadFromFile("portal.png");
 	textura_demon.loadFromFile("demon.png");
 	textura_kyle.loadFromFile("kyle.png");
 	textura_boss.loadFromFile("orc.png");
@@ -74,6 +75,9 @@ stage::stage(String fondo)
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(3900, 800.0f)));
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(5700, 800.0f)));
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(5800, 800.0f)));
+
+
+	portals.push_back(Portal(&textura_portal, Vector2u(7, 1), 0.1f, Vector2f(6600, 850.0f)));
 }
 
 
@@ -90,6 +94,22 @@ void stage::procesarColisionesStageX(Campeon& campeon)
 	{
 		if (caja.GetCollider().CheckCollision(cCampeon, direction, 1.0f))
 			campeon.onCollision(direction);
+
+	}
+	for (Portal& portal : portals)
+	{
+		if ((abs(portal.GetCollider().GetPosition().x - campeon.GetPosition().x ) < 10) && (abs(portal.GetCollider().GetPosition().y - campeon.GetPosition().y) < 10))
+		{
+			for (int i = 0; i < 4; i++)
+			{
+
+				sprite_background[i].setPosition(1920.0f * i ,0);
+				sprite_arboles[i].setPosition(1920.0f * i, 0);
+			}
+
+			campeon.SetPosition(sf::Vector2f(500, 500));
+		}
+
 
 	}
 	for (Platform& piso : pisos)
@@ -175,6 +195,13 @@ void stage::Draw(sf::RenderWindow & window, float deltaTime, Campeon& campeon)
 			demons.erase(demons.begin() + i);
 		}
 	}
+	for (Portal& portal: portals)
+	{
+		portal.Update(deltaTime);
+		portal.Draw(window);
+	}
+
+
 	for (Demon& demon : demons)
 	{
 

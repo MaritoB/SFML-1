@@ -9,6 +9,7 @@
 #include "Bat.h"
 #include "Kyle.h"
 #include "Demon.h"
+#include "Portal.h"
 #include <vector>
 
 using namespace sf;
@@ -25,6 +26,7 @@ public:
 	Sprite getCajas(int i);
 private:
 	std::vector<Platform>  cajas;
+	std::vector<Portal>  portals;
 	std::vector<Kyle>  kyles;
 	std::vector<Demon>  demons;
 	std::vector<Platform>  pisos;
@@ -39,6 +41,7 @@ private:
 	Sprite sprite_cajas[5];
 	Sprite sprite_arboles[4];
 	Sprite sprite_background[4];
+	Texture textura_portal;
 	Texture textura_cajas;
 	Texture textura_demon;
 	Texture textura_kyle;
