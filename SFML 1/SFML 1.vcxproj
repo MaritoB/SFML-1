@@ -146,6 +146,7 @@
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Proyectil.cpp" />
     <ClCompile Include="stage1.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aliado.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Portal.h" />
     <ClInclude Include="Proyectil.h" />
     <ClInclude Include="stage1.h" />
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="animacion.h" />

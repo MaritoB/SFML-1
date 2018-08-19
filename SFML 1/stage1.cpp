@@ -24,9 +24,9 @@ stage::stage(String fondo)
 	textura_piso.loadFromFile("suelo.png", IntRect(0, 0, 1920, 76));
 	textura_cajas.loadFromFile("roca.png", IntRect(0, 0, 125, 146));
 
-	aliados.push_back(aliado(&textura_aliados, Vector2u(10, 1), 0.15f, 18.0f, 100.0f, 0.6f, 100.0f));
+	aliados.push_back(aliado(&textura_aliados, Vector2u(10, 1), 0.10f, 18.0f, 100.0f, 0.6f, 100.0f));
 
-	kyles.push_back(Kyle(&textura_kyle, Vector2u(10, 10), 0.15f, 90.0f, 100.0f, 0.6f, 100.0f, Vector2f(3000, 800.0f)));
+	kyles.push_back(Kyle(&textura_kyle, Vector2u(10, 10), 0.11f, 90.0f, 100.0f, 0.6f, 100.0f, Vector2f(3000, 800.0f)));
 
 	cajas.push_back(Platform(&textura_casa, sf::Vector2f(600.0f, 400.0f), sf::Vector2f(150.0f, 820.0f)));
 
@@ -39,9 +39,9 @@ stage::stage(String fondo)
 
 
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(700.0f, 1000.0f)));
-	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(900.0f, 950.0f)));
+	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(900.0f, 930.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(950.0f, 1000.0f)));
-	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(1200.0f, 885.0f)));
+	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(1200.0f, 850.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(1600.0f, 885.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(1600.0f, 1000.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(400.0f, 146.0f), sf::Vector2f(2110.0f, 1000.0f)));
@@ -54,7 +54,7 @@ stage::stage(String fondo)
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5000.0f, 1000.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5050.0f, 950.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5100.0f, 1000.0f)));
-	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5350.0f, 885.0f)));
+	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5350.0f, 863.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(5750.0f, 850.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(125.0f, 146.0f), sf::Vector2f(6150.0f, 820.0f)));
 	cajas.push_back(Platform(&textura_cajas, sf::Vector2f(350.0f, 250.0f), sf::Vector2f(6650.0f, 1000.0f)));
@@ -66,18 +66,18 @@ stage::stage(String fondo)
 	bats.push_back(Bat(&textura_bat, Vector2u(10, 10), 0.07f, 130, 4, 100.0f, 10.0f, Vector2f(4600.0f, 800.0f)));
 	bats.push_back(Bat(&textura_bat, Vector2u(10, 10), 0.07f, 130, 4, 100.0f, 10.0f, Vector2f(4800.0f, 800.0f)));
 
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(1300.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2000.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2800.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(4700.0f, 800.0f)));
-	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.14f, 100.0f, 100.0f, 0.6f, 50.0f, Vector2f(4500.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.1f, 110.0f, 100.0f, 0.6f, 50.0f, Vector2f(1300.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.1f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(2000.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.1f, 110.0f, 100.0f, 0.6f, 50.0f, Vector2f(2800.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.1f, 90.0f, 100.0f, 0.6f, 50.0f, Vector2f(4700.0f, 800.0f)));
+	bosses.push_back(Orco(&textura_boss, Vector2u(10, 10), 0.1f, 110.0f, 100.0f, 0.6f, 50.0f, Vector2f(4500.0f, 800.0f)));
 
-	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(3900, 800.0f)));
+	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.12f, 130.0f, 100.0f, 0.01f, 100.0f, Vector2f(3900, 800.0f)));
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(5700, 800.0f)));
 	demons.push_back(Demon(&textura_demon, Vector2u(10, 4), 0.15f, 90.0f, 100.0f, 0.01f, 100.0f, Vector2f(5800, 800.0f)));
 
 
-	portals.push_back(Portal(&textura_portal, Vector2u(7, 1), 0.1f, Vector2f(6600, 850.0f)));
+	portals.push_back(Portal(&textura_portal, Vector2u(7, 1), 0.1f, Vector2f(6600, 832.0f)));
 }
 
 
@@ -167,7 +167,7 @@ void stage::procesarColisionesStageX(Campeon& campeon)
 	}
 	for (int i = 0; i < 4; i++)
 	{
-
+		//background movement
 		sprite_background[i].setPosition(sprite_background[i].getPosition().x - 0.0015f * campeon.GetVelocity().x, sprite_background[i].getPosition().y);
 		sprite_arboles[i].setPosition(sprite_arboles[i].getPosition().x - 0.0025f * campeon.GetVelocity().x, sprite_arboles[i].getPosition().y);
 	}

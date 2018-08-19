@@ -16,11 +16,11 @@ aliado::aliado(sf::Texture * textura, sf::Vector2u imageCount, float switchTime,
 	cld_dash = 1.0f;
 	//txt_bala.loadFromFile("daga.png");
 
-	body.setSize(sf::Vector2f(32, 32));
+	body.setSize(sf::Vector2f(64, 64));
 	body.setOrigin(body.getSize() / 2.0f);
-	body.setPosition(420.0f, 986.0f);
+	body.setPosition(420.0f, 970.0f);
 	body.setTexture(textura);
-	body.setScale(2.2f, 2.2f);
+	//body.setScale(2.2f, 2.2f);
 
 	//txt_lifeBar.loadFromFile("lifeBar.png");
 

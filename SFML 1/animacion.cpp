@@ -19,6 +19,7 @@ Animacion::~Animacion()
 
 void Animacion::Update(int row, float deltaTime,bool faceRigth, bool attack, bool dead)
 {
+	if (currentImage.y != row) currentImage.x = 0;
 	currentImage.y = row;
 	totalTime += deltaTime;
 

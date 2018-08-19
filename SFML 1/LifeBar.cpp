@@ -37,7 +37,7 @@ void LifeBar::Update(float deltaTime, float vida, sf::Vector2f posicion, float s
 	if (vida >= 90) row = 1;
 	if (vida >= 100) row = 0;
 	
-	body.setPosition(posicion.x,posicion.y - size*1.10f );
+	body.setPosition(posicion.x,posicion.y - size*1.20f );
 	animacion.Update(row, deltaTime, true, false, false);
 	body.setTextureRect(animacion.uvRect);
 }

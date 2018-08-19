@@ -6,9 +6,9 @@ Orco::Orco(sf::Texture * textura, sf::Vector2u imageCount, float switchTime, flo
 	Entidad( textura, imageCount,switchTime,speed,  jumpHeight,  vel_ataque,  vida)
 {
 	body.setPosition(position);
-	body.setSize(sf::Vector2f(64,64));
+	body.setSize(sf::Vector2f(100,100));
 	body.setOrigin(body.getSize() / 2.0f);
-	body.setScale(1.5, 1.5);
+	//body.setScale(1.5, 1.5);
 }
 
 void Orco::Update(float deltaTime, Campeon & campeon)
@@ -111,7 +111,7 @@ void Orco::procesarImpactos(std::vector<Proyectil>& balas)
 	for (size_t i = 0; i < balas.size(); i++)
 	{
 		Proyectil bala = balas[i];
-		if (bala.GetCollider().CheckCollision(cEnemigo, direction, 1.0f))
+		if (bala.GetCollider().CheckCollision(cEnemigo, direction, 0.0f))
 		{
 
 			vida -= bala.getDaño();

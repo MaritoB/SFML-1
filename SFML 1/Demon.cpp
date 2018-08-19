@@ -7,9 +7,9 @@ Demon::Demon(sf::Texture * textura, sf::Vector2u imageCount, float switchTime, f
 	Entidad(textura, imageCount, switchTime, speed, jumpHeight, vel_ataque, vida)
 {
 	body.setPosition(position);
-	body.setSize(sf::Vector2f(85, 85));
+	body.setSize(sf::Vector2f(130, 130));
 	body.setOrigin(body.getSize() / 2.0f);
-	body.setScale(1.5f, 1.5f);
+	
 	
 	txt_bala.loadFromFile("bola1.png");
 }
@@ -137,7 +137,7 @@ void Demon::procesarImpactos(std::vector<Proyectil>& balas)
 	for (size_t i = 0; i < balas.size(); i++)
 	{
 		Proyectil bala = balas[i];
-		if (bala.GetCollider().CheckCollision(cEnemigo, direction, 1.0f))
+		if (bala.GetCollider().CheckCollision(cEnemigo, direction, 0.0f))
 		{
 
 			vida -= bala.getDaño();

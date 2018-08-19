@@ -6,9 +6,9 @@ Kyle::Kyle(sf::Texture * textura, sf::Vector2u imageCount, float switchTime, flo
 	Entidad(textura, imageCount, switchTime, speed, jumpHeight, vel_ataque, vida)
 {
 	body.setPosition(position);
-	body.setSize(sf::Vector2f(32, 32));
+	body.setSize(sf::Vector2f(64, 64));
 	body.setOrigin(body.getSize() / 2.0f);
-	body.setScale(2, 2);
+
 
 }
 

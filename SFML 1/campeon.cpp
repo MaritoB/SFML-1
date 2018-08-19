@@ -16,11 +16,11 @@ Campeon::Campeon(sf::Texture * textura, sf::Vector2u imageCount, float switchTim
 	cld_dash = 1.0f;
 	txt_bala.loadFromFile("daga.png");
 
-	body.setSize(sf::Vector2f(32, 32));
+	body.setSize(sf::Vector2f(70, 70));
 	body.setOrigin(body.getSize() / 2.0f);
 	body.setPosition(500.0f, 900.0f);
 	body.setTexture(textura);
-	body.setScale(2, 2);
+	//body.setScale(2, 2);
 
 	txt_lifeBar.loadFromFile("lifeBar.png");
 
@@ -37,21 +37,30 @@ sf::Vector2i Campeon::procesarMouse(sf::RenderWindow & window) {
 	posicion_mouse = (sf::Vector2i)window.mapPixelToCoords(posicion_mouse);
 	return posicion_mouse;
 }
+// , TileMap& map)
+
 
 void Campeon::Update(float deltaTime, sf::RenderWindow & window)
 {
+	
+	
+	
 
 	bool atacar = false;
 	bool morir = false;
 	sf::Vector2i posicionMouse;
 	
 	if (sqrt(pow(velocity.x, 2)) < 10.0f) velocity.x = 0;
-	else velocity.x *= 0.90f;
+	else
+	{
+		velocity.x *= 0.90f;
+		//
+	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{
 		if (clock_dash.getElapsedTime().asSeconds() > cld_dash)
 		{
-			velocity.x *= 6;
+			velocity.x *= 5;
 			clock_dash.restart();
 		}
 	}
@@ -76,19 +85,19 @@ void Campeon::Update(float deltaTime, sf::RenderWindow & window)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		velocity.x -= speed ;
+		velocity.x -= speed;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		velocity.x += speed;
 	}
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)&& canJump)
 	{
 		canJump = false;
 		velocity.y = -sqrtf(2.0f * 918.0f * jumpHeight);
 	}
 	velocity.y += 981.0f * deltaTime;
-
 	if (!atacar)
 	{
 
@@ -99,13 +108,16 @@ void Campeon::Update(float deltaTime, sf::RenderWindow & window)
 		else
 		{
 			row = 2;
-			if (sqrt(pow(velocity.x,2 ))> 270) row = 5;
 			if (velocity.x > 0.0f)
 				faceRight = true;
 			else
 				faceRight = false;
 		}
 	}
+	if (velocity.y > 981.0f * deltaTime)row = 4;
+	if (velocity.y < 981.0f * deltaTime)row = 5;
+	if (abs(velocity.x)> 270) row =1;
+
 	if (vida <= 0)
 	{
 		morir = true;
@@ -123,8 +135,6 @@ void Campeon::Update(float deltaTime, sf::RenderWindow & window)
 	{
 		body.setFillColor(sf::Color::White);
 	}
-
-
 	animacion.Update(row, deltaTime, faceRight, atacar, morir);
 	body.setTextureRect(animacion.uvRect);
 	body.move(velocity * deltaTime );
