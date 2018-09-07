@@ -27,8 +27,6 @@ public:
 private:
 	std::vector<Platform>  cajas;
 	std::vector<Portal>  portals;
-	std::vector<Kyle>  kyles;
-	std::vector<Demon>  demons;
 	std::vector<Platform>  pisos;
 	std::vector<enemigo>  enemigos;
 	std::vector<Orco>  bosses;
@@ -43,6 +41,8 @@ private:
 	Sprite sprite_background[4];
 	Texture textura_portal;
 	Texture textura_cajas;
+	std::vector<Kyle>  kyles;
+	std::vector<Demon>  demons;
 	Texture textura_demon;
 	Texture textura_kyle;
 	Texture textura_aliados;

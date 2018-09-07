@@ -7,20 +7,19 @@ Demon::Demon(sf::Texture * textura, sf::Vector2u imageCount, float switchTime, f
 	Entidad(textura, imageCount, switchTime, speed, jumpHeight, vel_ataque, vida)
 {
 	body.setPosition(position);
-	body.setSize(sf::Vector2f(130, 130));
+	body.setSize(sf::Vector2f(100, 100));
 	body.setOrigin(body.getSize() / 2.0f);
 	
 	
 	txt_bala.loadFromFile("bola1.png");
 }
 
-void Demon::Update(float deltaTime, Campeon & campeon)
-{
+void Demon::Update(float deltaTime, Campeon & campeon, std::string sLevel, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight){
 	 bool atacar = false;
 	bool morir = false;
 	txt_lifeBar.loadFromFile("lifeBar.png");
 	lifeBar = new LifeBar(&txt_lifeBar, sf::Vector2u(1, 10), 0.01f, vida);
-
+	velocity.y = 20;
 	if (!atacar)
 	{
 
@@ -61,8 +60,8 @@ void Demon::Update(float deltaTime, Campeon & campeon)
 			}
 		}
 
-		velocity.y += 981.0f * deltaTime;
 
+		CheckCollisionTileMap(sLevel, deltaTime, nTileWidth, nTileHeight, nLevelWidth, nLevelHeight);
 
 		if (vida <= 0)
 		{
@@ -101,7 +100,7 @@ void Demon::Update(float deltaTime, Campeon & campeon)
 
 	}
 
-	vector<Proyectil>* xbalas = campeon.getBalas();
+	std::vector<Proyectil>* xbalas = campeon.getBalas();
 	procesarImpactos(*xbalas);
 	procesarGolpearCampeon(campeon);
 	animacion.Update(row, deltaTime, faceRight, atacar, morir);

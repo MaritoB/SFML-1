@@ -1,6 +1,5 @@
 #include"stage1.h"
 #include<iostream>
-#include "Collider.h"
 stage::stage(String fondo)
 {
 	textura_fondo.loadFromFile(fondo);
@@ -107,7 +106,7 @@ void stage::procesarColisionesStageX(Campeon& campeon)
 				sprite_arboles[i].setPosition(1920.0f * i, 0);
 			}
 
-			campeon.SetPosition(sf::Vector2f(500, 500));
+			campeon.setPosition(sf::Vector2f(500, 500));
 		}
 
 
@@ -205,7 +204,7 @@ void stage::Draw(sf::RenderWindow & window, float deltaTime, Campeon& campeon)
 	for (Demon& demon : demons)
 	{
 
-		demon.Update(deltaTime, campeon);
+//		demon.Update(deltaTime, campeon);
 		demon.Draw(window);
 	}
 	for (size_t i = 0; i < bosses.size(); i++)
@@ -252,7 +251,7 @@ void stage::Draw(sf::RenderWindow & window, float deltaTime, Campeon& campeon)
 	{
 		if (bat.getisAlive())
 		{
-			bat.Update(deltaTime, campeon);
+			//bat.Update(deltaTime, campeon);
 			bat.Draw(window);
 		}
 

@@ -82,6 +82,86 @@ void Entidad::onCollision(sf::Vector2f direction)
 
 }
 
+
+void Entidad::CheckCollisionTileMap(std::string sLevel, float fElapsedTime, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight) {
+
+	//setVelocity(GetVelocity().x*0.91f, GetVelocity().y*0.99f);
+	float fPlayerVelX = GetVelocity().x*0.1f;
+	float fPlayerVelY = GetVelocity().y*0.1f;
+	float fPlayerPosX = GetPosition().x / nTileWidth;
+	float fPlayerPosY = GetPosition().y / nTileHeight;
+	float playerHalfSize = GetCollider().GetHalfSize().x / nTileWidth;
+	//fPlayerVelY += 200 * fElapsedTime;
+
+	float fNewPlayerPosX = fPlayerPosX + fPlayerVelX * fElapsedTime;
+	float fNewPlayerPosY = fPlayerPosY + fPlayerVelY * fElapsedTime;
+
+
+
+	auto GetTile = [&](int x, int y)
+	{
+		if (x >= 0 && x < nLevelWidth && y >= 0 && y < nLevelHeight)
+			return sLevel[y * nLevelWidth + x];
+		else
+			return ' ';
+	};
+	auto SetTile = [&](int x, int y, wchar_t c)
+	{
+		if (x >= 0 && x < nLevelWidth && y >= 0 && y < nLevelHeight)
+			sLevel[y * nLevelWidth + x] = c;
+
+	};
+
+	if (fPlayerVelX <= 0) // Moving Left
+	{
+		//if (GetTile(fNewPlayerPosX + 0.0f, fPlayerPosY + 0.0f) != L'.' || GetTile(fNewPlayerPosX + 0.0f, fPlayerPosY + 0.9f) != L'.')
+		if (GetTile(fNewPlayerPosX - playerHalfSize, fPlayerPosY - playerHalfSize) != L'.' || GetTile(fNewPlayerPosX - playerHalfSize, fPlayerPosY + playerHalfSize) != L'.')
+		{
+			fNewPlayerPosX = (int)fNewPlayerPosX + 1;
+			fPlayerVelX = 0;
+		}
+	}
+	else // Moving Right
+	{
+		//if (GetTile(fNewPlayerPosX + 1.0f, fPlayerPosY + 0.0f) != L'.' || GetTile(fNewPlayerPosX + 1.0f, fPlayerPosY + 0.9f) != L'.')
+		if (GetTile(fNewPlayerPosX + playerHalfSize, fPlayerPosY - playerHalfSize) != L'.' || GetTile(fNewPlayerPosX + playerHalfSize, fPlayerPosY + playerHalfSize) != L'.')
+		{
+			fNewPlayerPosX = (int)fNewPlayerPosX;
+			fPlayerVelX = 0;
+
+		}
+	}
+
+		
+	if (fPlayerVelY <= 0) // Moving Up
+	{
+		if (GetTile(fNewPlayerPosX - playerHalfSize, fNewPlayerPosY - playerHalfSize) != L'.' || GetTile(fNewPlayerPosX + playerHalfSize, fNewPlayerPosY - playerHalfSize) != L'.')
+		{
+			fNewPlayerPosY = (int)fNewPlayerPosY + 1;
+			fPlayerVelY = 0;
+		}
+	}
+	else // Moving Down
+	{
+		if (GetTile(fNewPlayerPosX - playerHalfSize, fNewPlayerPosY + playerHalfSize) != L'.' || GetTile(fNewPlayerPosX + playerHalfSize, fNewPlayerPosY + playerHalfSize) != L'.')
+		{
+			fNewPlayerPosY = (int)fNewPlayerPosY;
+			fPlayerVelY = 0;
+				
+		}
+	}
+	if (fPlayerVelY> 2.5f)fPlayerVelY = 2.5f;
+	if (fPlayerVelY < -2.5f)fPlayerVelY = -2.5f;
+	// Apply new position
+	fNewPlayerPosX = fPlayerPosX * nTileWidth + fPlayerVelX *10 * fElapsedTime;
+	fNewPlayerPosY = fPlayerPosY * nTileHeight + fPlayerVelY *100 * fElapsedTime ;
+	setPosition(sf::Vector2f(fNewPlayerPosX, fNewPlayerPosY));
+	setVelocity(fPlayerVelX, fPlayerVelY);
+}
+
+
+
+
 void Entidad::disparar(sf::Vector2i posicion)
 {
 	if (clock_ataque.getElapsedTime().asSeconds() > vel_ataque)

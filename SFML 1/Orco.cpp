@@ -90,7 +90,7 @@ void Orco::Update(float deltaTime, Campeon & campeon)
 
 
 
-	vector<Proyectil>* balas = campeon.getBalas();
+	std::vector<Proyectil>* balas = campeon.getBalas();
 	procesarImpactos(*balas);
 	animacion.Update(row, deltaTime, faceRight, atacar, morir);
 	body.setTextureRect(animacion.uvRect);

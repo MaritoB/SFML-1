@@ -7,7 +7,7 @@ Bat::Bat(sf::Texture * textura, sf::Vector2u imageCount, float switchTime, float
 	body.setSize(sf::Vector2f(32, 32));
 	body.setOrigin(body.getSize() / 2.0f);
 	body.setScale(2, 2);
-
+	setDying(false);
 }
 
 
@@ -25,7 +25,9 @@ void Bat::procesarGolpearCampeon(Campeon & campeon)
 
 	if (campeon.GetCollider().CheckCollision(cEnemigo, direction, 1.0f))
 	{
-		campeon.getHurt(10.0f);
+	
+		if(!getDying())
+			campeon.getHurt(10.0f);
 	}
 }
 
@@ -56,17 +58,14 @@ void Bat::procesarImpactos(std::vector<Proyectil>& balas)
 	}
 }
 
-void Bat::Update(float deltaTime, Campeon & campeon)
+void Bat::Update(float deltaTime, Campeon & campeon, std::string sLevel, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight)
 {
 	bool morir = false;
 	txt_lifeBar.loadFromFile("lifeBar.png");
 	lifeBar = new LifeBar(&txt_lifeBar, sf::Vector2u(1, 10), 0.01f, vida);
 
-	if (body.getPosition().y < 600)
-	{
-		velocity.y = 0;
-	}
-	if (sqrt(pow((campeon.GetPosition().x - body.getPosition().x), 2)) < 300)
+
+	if (abs(campeon.GetPosition().x - body.getPosition().x) < 300)
 	{
 		if (campeon.GetPosition().x < body.getPosition().x)
 		{
@@ -78,9 +77,9 @@ void Bat::Update(float deltaTime, Campeon & campeon)
 		}
 
 	}
-	if (sqrt(pow((campeon.GetPosition().x - body.getPosition().x), 2)) < 30)
+	if (abs(campeon.GetPosition().x - body.getPosition().x) < 200)
 	{
-		velocity.x = 0.0f;
+		//velocity.x = 0.0f;
 		if (campeon.GetPosition().y > body.getPosition().y)
 		{
 			velocity.y = speed * 1.50f;
@@ -99,6 +98,10 @@ void Bat::Update(float deltaTime, Campeon & campeon)
 		velocity.y = -speed;
 	}
 
+	//
+	CheckCollisionTileMap(sLevel, deltaTime,nTileWidth,nTileHeight,nLevelWidth,nLevelHeight);
+	
+	
 	if (velocity.x == 0.0f)
 	{
 		row = 5;
@@ -119,6 +122,7 @@ void Bat::Update(float deltaTime, Campeon & campeon)
 	{
 		velocity.x = 0;
 		velocity.y = 30;
+		setDying(true);
 		morir = true;
 		row =9;
 		if (animacion.murio == true)
@@ -126,7 +130,7 @@ void Bat::Update(float deltaTime, Campeon & campeon)
 			setIsAlive(false);
 		}
 	}
-	vector<Proyectil>* balas = campeon.getBalas();
+	std::vector<Proyectil>* balas = campeon.getBalas();
 	procesarImpactos(*balas);
 	procesarGolpearCampeon(campeon);
 	animacion.Update(row, deltaTime, faceRight, false, morir);

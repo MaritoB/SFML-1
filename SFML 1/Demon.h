@@ -16,7 +16,7 @@ public:
 	void Draw(sf::RenderWindow & window);
 	void procesarGolpearCampeon(Campeon & campeon);
 	void procesarImpactos(std::vector<Proyectil>& balas);
-	void Update(float deltaTime, Campeon & campeon);
+	void Update(float deltaTime, Campeon & campeon, std::string sLevel, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight);
 	void disparar(sf::Vector2f posicion);
 
 

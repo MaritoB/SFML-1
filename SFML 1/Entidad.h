@@ -4,7 +4,6 @@
 #include "Collider.h"
 #include "Proyectil.h"
 #include "LifeBar.h"
-
 class Entidad
 {
 public:
@@ -16,14 +15,25 @@ public:
 	void Draw(sf::RenderWindow & window);
 	void onCollision(sf::Vector2f direction);
 
+	void CheckCollisionTileMap(std::string sLevel, float fElapsedTime, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight);
+
+
 	void disparar(sf::Vector2i posicion);
 	void getHurt(float daño);
 	sf::Vector2f GetPosition() { return body.getPosition(); }
+	void setPosition(sf::Vector2f position) { body.setPosition(position); }
 	Collider GetCollider() { return Collider(body); }
 	sf::Clock GetClockRecuperacion() { return clock_recuperacion; }
 	float GetRecuperacion() { return recuperacion; }
 	sf::Vector2f GetVelocity() { return velocity; }
+	void setVelocity(float velX, float velY) { velocity.x = velX; velocity.y = velY; }
 	std::vector<Proyectil>* getBalas() { return  &balas; }
+
+	bool getAttacking() { return attacking; }
+	void setAttacking(bool x) { attacking = x; }
+
+	bool getDying() { return dying; }
+	void setDying(bool x) { dying = x; }
 
 protected:
 	sf::Texture txt_lifeBar;
@@ -43,6 +53,9 @@ protected:
 	float recuperacion;
 	float vida;
 	bool isAlive;
+
+	bool attacking;
+	bool dying;
 
 	sf::Vector2f velocity;
 	bool canJump;

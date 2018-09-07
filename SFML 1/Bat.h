@@ -14,7 +14,8 @@ public:
 
 		void procesarGolpearCampeon(Campeon & campeon);
 		void procesarImpactos(std::vector<Proyectil>& balas);
-		void Update(float deltaTime, Campeon & campeon);
+		void Update(float deltaTime, Campeon & campeon, std::string sLevel, float nTileWidth, float nTileHeight, float nLevelWidth, float nLevelHeight);
+		//void Update(float deltaTime, Campeon & campeon);
 
 		float getVida() { return vida; }
 		bool getisAlive() { return isAlive; }
